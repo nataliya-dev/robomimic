@@ -488,6 +488,9 @@ def normalize_dict(dict, normalization_stats):
         o_num_dims = len(offset.shape)
         shape_len_diff = len(offset.shape) - o_num_dims
         assert shape_len_diff >= 0, "shape length mismatch in @normalize_dict"
+        # print(dict[m].shape)
+        # print(dict[m].shape[-o_num_dims:])
+        # print(offset.shape)
         assert dict[m].shape[-o_num_dims:] == offset.shape, "shape mismatch in @normalize_obs"
 
         # Obs can have one or more leading batch dims - prepare for broadcasting.

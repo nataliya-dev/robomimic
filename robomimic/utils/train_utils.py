@@ -312,6 +312,11 @@ def run_rollout(
     policy.start_episode()
 
     ob_dict = env.reset()
+    print("hi----------------------------------------------------------------------")
+    #print(ob_dict)
+    # for k, v in ob_dict.items():
+    #     print(f"{k} {v.shape}")
+    # exit()
     goal_dict = None
     if use_goals:
         # retrieve goal from the environment

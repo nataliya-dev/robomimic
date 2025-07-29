@@ -126,7 +126,9 @@ class ConditionalUnet1D(nn.Module):
         kernel_size: Conv kernel size
         n_groups: Number of groups for GroupNorm
         """
-
+        # print(global_cond_dim)
+        # print("hello")
+        # exit()
         super().__init__()
         all_dims = [input_dim] + list(down_dims)
         start_dim = down_dims[0]
@@ -203,6 +205,17 @@ class ConditionalUnet1D(nn.Module):
         global_cond: (B,global_cond_dim)
         output: (B,T,input_dim)
         """
+        # orch.Size([1, 144])
+        # torch.Size([1, 16, 7]) -- inference
+
+        # torch.Size([100, 288])
+        # torch.Size([100, 16, 7])
+
+
+        # print("hi")
+        # print(global_cond.shape)
+        # print(sample.shape)
+        # exit()
         # (B,T,C)
         sample = sample.moveaxis(-1,-2)
         # (B,C,T)

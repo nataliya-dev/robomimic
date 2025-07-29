@@ -58,7 +58,9 @@ class DiffusionPolicyUNet(PolicyAlgo):
         observation_group_shapes = OrderedDict()
         observation_group_shapes["obs"] = OrderedDict(self.obs_shapes)
         encoder_kwargs = ObsUtils.obs_encoder_kwargs_from_config(self.obs_config.encoder)
-        
+        # print("hello33")
+        # print(observation_group_shapes)
+        # exit()
         obs_encoder = ObsNets.ObservationGroupEncoder(
             observation_group_shapes=observation_group_shapes,
             encoder_kwargs=encoder_kwargs,
@@ -305,6 +307,8 @@ class DiffusionPolicyUNet(PolicyAlgo):
             
             # put actions into the queue
             self.action_queue.extend(action_sequence[0])
+            # print(action_sequence.shape)
+            # print("here")
         
         # has action, execute from left to right
         # [Da]
@@ -324,6 +328,7 @@ class DiffusionPolicyUNet(PolicyAlgo):
             num_inference_timesteps = self.algo_config.ddpm.num_inference_timesteps
         elif self.algo_config.ddim.enabled is True:
             num_inference_timesteps = self.algo_config.ddim.num_inference_timesteps
+            #num_inference_timesteps = 1
         else:
             raise ValueError
         

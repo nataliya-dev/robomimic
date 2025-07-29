@@ -2,7 +2,7 @@
     "algo_name": "diffusion_policy",
     "experiment": {
         "name": "test",
-        "validate": false,
+        "validate": true,
         "logging": {
             "terminal_output_to_txt": true,
             "log_tb": true,
@@ -12,14 +12,14 @@
         "save": {
             "enabled": true,
             "every_n_seconds": null,
-            "every_n_epochs": 50,
+            "every_n_epochs": 10,
             "epochs": [],
-            "on_best_validation": false,
+            "on_best_validation": true,
             "on_best_rollout_return": false,
-            "on_best_rollout_success_rate": true
+            "on_best_rollout_success_rate": false
         },
         "epoch_every_n_steps": 100,
-        "validation_epoch_every_n_steps": 10,
+        "validation_epoch_every_n_steps": 100,
         "env": null,
         "additional_envs": null,
         "render": false,
@@ -41,13 +41,13 @@
         "data": null,
         "output_dir": "../diffusion_policy_trained_models",
         "normalize_weights_by_ds_size": false,
-        "num_data_workers": 0,
+        "num_data_workers": 2,
         "hdf5_cache_mode": "all",
         "hdf5_use_swmr": true,
         "hdf5_load_next_obs": false,
         "hdf5_normalize_obs": false,
-        "hdf5_filter_key": null,
-        "hdf5_validation_filter_key": null,
+        "hdf5_filter_key": "train",
+        "hdf5_validation_filter_key": "valid",
         "seq_length": 16,
         "pad_seq_length": true,
         "frame_stack": 2,
@@ -149,9 +149,10 @@
                 "obs_randomizer_class": null,
                 "obs_randomizer_kwargs": {}
             },
+
+
             "rgb": {
                 "core_class": "VisualCore",
-                "core_kwargs": {},
                 "obs_randomizer_class": null,
                 "obs_randomizer_kwargs": {}
             },

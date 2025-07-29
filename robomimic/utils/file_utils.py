@@ -422,7 +422,7 @@ def policy_from_checkpoint(device=None, ckpt_path=None, ckpt_dict=None, verbose=
     if device is None:
         # get torch device
         device = TorchUtils.get_torch_device(try_to_use_cuda=config.train.cuda)
-
+    print(f"---using device {device}---")
     # create model and load weights
     model = algo_factory(
         algo_name,

@@ -85,7 +85,10 @@ def train(config, device, resume=False):
 
         # load basic metadata from training file
         print("\n============= Loaded Environment Metadata =============")
-        env_meta = FileUtils.get_env_metadata_from_dataset(dataset_path=dataset_path)
+        try:
+            env_meta = FileUtils.get_env_metadata_from_dataset(dataset_path=dataset_path)
+        except:
+            env_meta = {}
 
         # populate language instruction for env in env_meta
         env_meta["lang"] = dataset_cfg.get("lang", "dummy")
